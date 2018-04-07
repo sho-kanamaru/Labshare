@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407123603) do
+ActiveRecord::Schema.define(version: 20180407122252) do
 
   create_table "client_recruit_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180407123603) do
     t.string "title", null: false
     t.bigint "field_id"
     t.string "detail", null: false
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["field_id"], name: "index_recruits_on_field_id"

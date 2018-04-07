@@ -2,32 +2,30 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
      <div class="recruit_new form-horizontal">
-       <form>
+       <%= form_tag('/recruits', method: :post) do %>
          <div class="form-group">
            <label for="title">title</label>
-           <input type="title" class="form-control" id="title" placeholder="title">
+           <input type="title" class="form-control" id="title" placeholder="title" name="title">
          </div>
          <div class="form-group">
            <label for="fields">fields</label>
-           <select class="form-control" id="fileds">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
-             <option>4</option>
-             <option>5</option>
+           <select class="form-control" id="fileds" name="field_id">
+             <% @fields.each do |field| %>
+               <option value="<%= field.id %>"><%= field.name %></option>
+             <% end %>
            </select>
          </div>
 
          <div class="form-group">
            <label for="detail">detail</label>
-           <textarea class="form-control" id="detail" rows="5"></textarea>
+           <textarea class="form-control" id="detail" rows="5" name="detail"></textarea>
          </div>
          <div class="form-group">
            <label for="image">image</label>
            <input type="file" class="form-control-file" id="image">
          </div>
-         <button action="/clients" type="submit" class="btn btn-primary">掲載する</button>
-       </form>
+         <input type="submit" class="btn btn-primary" value="掲載する">
+       <% end %>
      </div>
     </div>
   </div>
