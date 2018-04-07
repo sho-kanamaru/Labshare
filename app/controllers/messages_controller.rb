@@ -10,16 +10,21 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.new
-    @messages = Message.order("created_at ASC")
     @recruit = Recruit.find(params[:recruit_id])
-    @user = current_user
+    @user = get_recruit_maker_user
+    @messages = Message.where(from_id: current_user.id, to_id: @user.id).order("created_at ASC")
     @users = WorkerRecruitRelation.where(recruit_id: @recruit).map{ |user| User.find(user.user_id) }
-    if WorkerRecruitRelation.where(user_id: @user, recruit_id: @recruit).size == 0
-      WorkerRecruitRelation.create(user_id: @user, recruit_id: @recruit)
+    if WorkerRecruitRelation.where(user_id: current_user, recruit_id: @recruit).size == 0
+      WorkerRecruitRelation.create(user_id: current_user, recruit_id: @recruit)
     end
   end
 
   private
+
+  def get_recruit_maker_user
+    recruit_maker = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
+    recruit_maker_user = User.find(recruit_maker[0].id)
+  end
 
   def create_params
     recruit_maker = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
