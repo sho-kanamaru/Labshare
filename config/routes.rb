@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   
-  get 'workers/index'
-
+  devise_for :users
   root "workers#index"
 
   # workers
