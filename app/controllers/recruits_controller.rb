@@ -1,5 +1,9 @@
 class RecruitsController < ApplicationController
-  def show
 
+  def show
   end
+  
+  def new
+  end
+  
 end
