@@ -5,12 +5,13 @@ class RecruitsController < ApplicationController
   end
 
   def create
-    Recruit.create(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
+    recruit = Recruit.create(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
+    ClientRecruitRelation.create(user_id: current_user.id, recruit_id: recruit.id)
     redirect_to clients_path
   end
 
   def show
-    @recruit = Recruit.find(params[:id]) 
+    @recruit = Recruit.find(params[:id])
   end
 
   private
