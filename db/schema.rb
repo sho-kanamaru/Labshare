@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407082507) do
+ActiveRecord::Schema.define(version: 20180407083741) do
+
+  create_table "client_recruit_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "recruit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruit_id"], name: "index_client_recruit_relations_on_recruit_id"
+    t.index ["user_id"], name: "index_client_recruit_relations_on_user_id"
+  end
 
   create_table "fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "from_id"
+    t.bigint "to_id"
+    t.string "body"
+    t.bigint "recruit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_id"], name: "fk_rails_2bcf7eed31"
+    t.index ["recruit_id"], name: "index_messages_on_recruit_id"
+    t.index ["to_id"], name: "fk_rails_5eb9eebc29"
   end
 
   create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -26,6 +47,16 @@ ActiveRecord::Schema.define(version: 20180407082507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["field_id"], name: "index_ranks_on_field_id"
+  end
+
+  create_table "recruits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title", null: false
+    t.bigint "field_id"
+    t.string "detail", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_recruits_on_field_id"
   end
 
   create_table "user_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -44,7 +75,24 @@ ActiveRecord::Schema.define(version: 20180407082507) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "worker_recruit_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "recruit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruit_id"], name: "index_worker_recruit_relations_on_recruit_id"
+    t.index ["user_id"], name: "index_worker_recruit_relations_on_user_id"
+  end
+
+  add_foreign_key "client_recruit_relations", "recruits"
+  add_foreign_key "client_recruit_relations", "users"
+  add_foreign_key "messages", "recruits"
+  add_foreign_key "messages", "users", column: "from_id"
+  add_foreign_key "messages", "users", column: "to_id"
   add_foreign_key "ranks", "fields"
+  add_foreign_key "recruits", "fields"
   add_foreign_key "user_fields", "fields"
   add_foreign_key "user_fields", "users"
+  add_foreign_key "worker_recruit_relations", "recruits"
+  add_foreign_key "worker_recruit_relations", "users"
 end
