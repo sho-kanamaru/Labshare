@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'clients/index'
+
   root "workers#index"
 
   # workers
