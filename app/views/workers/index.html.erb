@@ -1,1 +1,22 @@
-<%= @user.name %>
+<div class="container">
+
+  <!-- 以下の要素を繰り返す。 -->
+<% (0...100).each do |x| %>
+  <a href="#" class="card-recruit">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 10px; padding: 5px; box-sizing: border-box;">
+      <div class="card h-100">
+        <div class="card-body hogehoge">
+          <h4>HP作ってください！！</h5>
+          <h5>1000円</h5>
+          <p class="card-text">あなたの力が必要です。手伝って下さい。あなたの力が必要です。手伝って下さい。あなたの力が必要です。手伝って下さい。</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+  　  </div>
+    </div>
+  </a>
+<% end %>
+  <!-- ここまで -->
+
+</div>
