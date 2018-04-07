@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => {
+    registrations: "users/registrations"
+  }
 
   root "workers#index"
 
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
   # clients
   resources :clients, only: [:index]
 
+  # recruits
   resources :recruits, only: [:new, :create, :show] do
     resources :messages, param: :user_id, only: [:index, :show]
   end
+
 end
