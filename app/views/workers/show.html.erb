@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+      <!--ユーザーの情報-->
+      <div class="user_info">
+
+      </div>
+
+      <!--応募した案件の情報-->
+      <div class="recruit_list col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <h3>応募した案件一覧</h3>
+
+        <% if !@recruits.nil? %>
+          <% @recruits.each_with_index do |recruit,i| %>
+            <a href="/recruits/<%= recruit.id %>" class="card-recruit">
+              <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h4 class="card-title card_header">
+                      <%= recruit.title %>
+                    </h4>
+                    <h5 class="card-price">$24.99</h5>
+                    <p class="card-text"><%= recruit.detail %></p>
+                  </div>
+                  <div class="card-footer">ユーザーの評価
+                    <div class="star-ratings-sprite"><span style="width:<%= @rank[i]/5.0*100 %>%" class="star-ratings-sprite-rating"></span></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
