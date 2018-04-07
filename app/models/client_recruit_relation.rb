@@ -1,5 +1,8 @@
 class ClientRecruitRelation < ApplicationRecord
-    def self.getUserIdByRecruitId(recruits)
-        user_ids = recruits.map{ |recruit| ClientRecruitRelation.find_by(recruit_id: recruit.id)}
-    end
+  belongs_to :user
+  belongs_to :recruit
+
+  def self.getUserByRecruitId(recruits)
+    users = recruits.map{ |recruit| ClientRecruitRelation.find_by(recruit_id: recruit.id)}.delete_if{|recruit| recruit == nil}
+  end
 end

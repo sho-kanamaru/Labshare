@@ -1,7 +1,7 @@
 class WorkersController < ApplicationController
   def index
     @recruits = Recruit.all
-    user_ids = ClientRecruitRelation.getUserIdByRecruitId(@recruits)
-    @rank = Rank.clientRankAverage(user_ids)
+    users = ClientRecruitRelation.getUserByRecruitId(@recruits)
+    @rank = Rank.clientRankAverage(users)
   end
 end
