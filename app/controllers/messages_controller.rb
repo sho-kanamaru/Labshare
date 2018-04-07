@@ -19,16 +19,32 @@ class MessagesController < ApplicationController
     end
   end
 
+  def client_show
+    @message = Message.new
+    @recruit = Recruit.find(params[:recruit_id])
+    @user = get_recruit_maker_user
+    @messages = Message.where(from_id: current_user.id, to_id: @user.id).order("created_at ASC")
+    @users = WorkerRecruitRelation.where(recruit_id: @recruit).map{ |user| User.find(user.user_id) }
+    if WorkerRecruitRelation.where(user_id: current_user, recruit_id: @recruit).size == 0
+      WorkerRecruitRelation.create(user_id: current_user, recruit_id: @recruit)
+    end
+  end
+
   private
+
+  def get_recruit_apply_user
+    recruit_apply = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
+    recruit_maker_user = User.find(recruit_maker[0].user_id)
+  end
 
   def get_recruit_maker_user
     recruit_maker = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
-    recruit_maker_user = User.find(recruit_maker[0].id)
+    recruit_maker_user = User.find(recruit_maker[0].user_id)
   end
 
   def create_params
     recruit_maker = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
-    recruit_maker_user = User.find(recruit_maker[0].id)
+    recruit_maker_user = User.find(recruit_maker[0].user_id)
     params.require(:message).permit(:body).merge(from_id: current_user.id, to_id: recruit_maker_user.id, recruit_id: params[:recruit_id])
   end
 end

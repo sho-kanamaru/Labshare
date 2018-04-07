@@ -19,6 +19,9 @@
               <div class="card-footer">
                 <small class="text-muted"><%= @ranks[i]%></small>
               </div>
+              <div class="card-footer">
+                <a href="/recruits/<%= recruit.id %>/client_messages/<%= current_user.id %>">メッセージ：<%= @message_count %>件あり</a>
+              </div>
             </div>
           </div>
         <% end %>

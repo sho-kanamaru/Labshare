@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+      <!-- メッセージ相手を選択するナビ -->
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="/recruits/<%= @recruit_id %>/messages/<%= @user.id %>"><%= @user.name %></a></li>
+        </ul>
+
+      </div>
+
+      <!--チャット画面-->
+      <div class="message_view col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="panel panel-default ">
+
+          <!--チャットのぶん面-->
+          <div class="panel-heading">
+            <h1 class="panel-title">message view</h1>
+          </div>
+
+          <div class="panel-body">
+            <div class="text-left">
+              <% @messages.each do |message| %>
+                <div id='chat'><%= message.body %></div>
+              <% end %>
+            </div>
+            <div class="text-right">
+              <div id='chat'>返信</div>
+            </div>
+            <div class="text-right">
+              <div id='chat'>返信</div>
+            </div>
+          </div>
+
+        </div>
+
+        <%= form_for [@recruit, @message] do |f| %>
+          <div class='inputText'>
+            <%= f.text_area :body, placeholder: 'Shift+Enterで送信', rows: "5", id: "txt", class: "form-control" %>
+            <%= button_tag type: "submit", class: "btn btn-primary chat-btn pull-right", style: "margin-top: 1em" do %>
+              投稿する
+            <% end %>
+            <!-- <button type="button" class="btn btn-primary chat-btn pull-right" style="margin-top: 1em">承認</button> -->
+          </div>
+        <% end %>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
