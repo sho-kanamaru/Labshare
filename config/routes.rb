@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :recruits, only: [:new, :create, :show, :edit, :update] do
     resources :messages, param: :user_id, only: [:index, :create, :show]
   end
+
+  put "/recruits/:id/approvals/:user_id" , to: "recruits#approval"
 end
