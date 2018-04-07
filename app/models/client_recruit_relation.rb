@@ -1,0 +1,2 @@
+class ClientRecruitRelation < ApplicationRecord
+end
