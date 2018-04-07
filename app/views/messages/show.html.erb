@@ -6,10 +6,9 @@
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#">アクティブな相手</a></li>
-          <li><a href="/recruits/<%= @recruit_id %>/messages/1">相手1</a></li>
-          <li><a href="/recruits/<%= @recruit_id %>/messages/2">相手2</a></li>
-          <li><a href="/recruits/<%= @recruit_id %>/messages/3">相手3</a></li>
+          <% @users.each do |user| %>
+            <li  class="<% if user.id == @user_id.to_i %>active<% end %>"><a href="/recruits/<%= @recruit_id %>/messages/<%= user.id %>"><%= user.name %></a></li>
+          <% end %>
         </ul>
 
       </div>
