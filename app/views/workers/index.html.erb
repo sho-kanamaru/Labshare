@@ -58,15 +58,17 @@
     <!-- 以下の要素を繰り返す。 -->
     <% @recruits.each_with_index do |recruit,i| %>
         <a href="/recruits/<%= recruit.id %>" class="card-recruit">
-          <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 10px; padding: 5px; box-sizing: border-box;">
-            <div class="card h-100">
-              <div class="card-body hogehoge">
-                <h4><%= recruit.title %></h5>
-                  <h5>1000円</h5>
-                  <p class="card-text"><%= recruit.detail %></p>
+          <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 " style="margin-bottom: 10px; padding: 5px; box-sizing: border-box;">
+            <div class="card border-primary mb-3 h-100">
+              <div class="card-header">
+                <small class="text-muted"><h6 class="card_header"><%= recruit.title %></h6></small>
               </div>
-              <div class="card-footer">
-                <small class="text-muted"><%= @rank[i] %></small>
+              <div class="card-body hogehoge">
+                  <h5>金額：1000円</h5>
+                  <p class="card-text">概要：<%= recruit.detail %></p>
+              </div>
+              <div class="card-footer">ユーザーの評価
+                <div class="star-ratings-sprite"><span style="width:<%= @rank[i]/5.0*100 %>%" class="star-ratings-sprite-rating"></span></div>
               </div>
         　  </div>
           </div>
