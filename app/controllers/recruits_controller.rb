@@ -12,6 +12,9 @@ class RecruitsController < ApplicationController
 
   def show
     @recruit = Recruit.find(params[:id])
+    client_id = ClientRecruitRelation.find_by(recruit_id: params[:id]).user_id
+    @client = User.find(client_id)
+    @user = current_user
   end
 
   private
