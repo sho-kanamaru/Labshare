@@ -1,7 +1,7 @@
 <div class="container">
 
   <!-- 以下の要素を繰り返す。 -->
-<% @recruits.each do |recruit| %>
+<% @recruits.each_with_index do |recruit,i| %>
   <a href="/recruits/<%= recruit.id %>" class="card-recruit">
     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 10px; padding: 5px; box-sizing: border-box;">
       <div class="card h-100">
@@ -11,7 +11,7 @@
           <p class="card-text"><%= recruit.detail %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted"><%= @rank %></small>
+          <small class="text-muted"><%= @rank[i] %></small>
         </div>
   　  </div>
     </div>
