@@ -6,7 +6,14 @@
         <img class="card-img-top card-img-top-custom" src="https://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg" alt="Card image cap">
         <p class="card-text card-text-custom"><%= @recruit.detail %></p>
         <% if @client == @user %>
-          ちゃっとする
+          <% if @applied_users.size == 0 %>
+            <p>申し込んでいる人は居ません</p>
+            <p>ユーザーを探す</p>
+          <% else %>
+            <% for user in @applied_users do %>
+              <p><%= user.name %></p>
+            <% end %>
+          <% end %>
         <% else %>
           <a href="/recruits/<%= @recruit.id %>/messages/<%= current_user.id %>" class="btn btn-primary btn-custom">応募する</a>
         <% end %>
