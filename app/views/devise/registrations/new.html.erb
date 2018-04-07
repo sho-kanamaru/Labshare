@@ -9,6 +9,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :university %> <em>(6 characters maximum)</em><br />
+    <%= f.text_field :university, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
