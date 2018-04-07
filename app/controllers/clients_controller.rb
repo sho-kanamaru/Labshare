@@ -17,11 +17,8 @@ class ClientsController < ApplicationController
     @recruit = Recruit.find(params[:id])
   end
 
-  def update
-    recruit = Recruit.find(params[:id])
-    recruit.update(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
-    redirect_to :action => "show"
-  end  
+
+ 
 
   private
   def create_params
