@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'recruits/new'
+
   get 'workers/index'
 
   root "workers#index"
