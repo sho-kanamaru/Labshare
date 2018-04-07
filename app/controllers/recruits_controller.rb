@@ -10,6 +10,7 @@ class RecruitsController < ApplicationController
   end
 
   def show
+    @recruit = Recruit.find(params[:id]) 
   end
 
   private
