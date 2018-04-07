@@ -10,11 +10,9 @@
          <div class="form-group">
            <label for="fields">fields</label>
            <select class="form-control" id="fileds" name="field_id">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
-             <option>4</option>
-             <option>5</option>
+             <% @fields.each do |field| %>
+               <option value="<%= field.id %>"><%= field.name %></option>
+             <% end %>
            </select>
          </div>
 
