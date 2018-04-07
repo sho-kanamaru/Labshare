@@ -11,6 +11,7 @@ class RecruitsController < ApplicationController
   end
 
   def show
+    @url = "/recruits/"+params[:id]+"approvals"
     # 案件の情報取得
     @recruit = Recruit.find(params[:id])
     # @applicants = WorkerRecruitRelation.where(recruit_id: @client_recruit.id)
@@ -41,13 +42,16 @@ class RecruitsController < ApplicationController
     recruit = Recruit.find(params[:id])
     recruit.update(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
     redirect_to :action => "show"
-  end  
+  end
+
+  def approval
+    worker_recruit= Recruit.find(params[:user_id])
+    binding.pry
+  end
 
   private
   def create_params
     params.permit(:title, :field_id, :detail)
   end
-
-
 
 end
