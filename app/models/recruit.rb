@@ -1,5 +1,4 @@
 class Recruit < ApplicationRecord
-<<<<<<< HEAD
   has_one :message
   belongs_to :field
   has_many :client_recruit_relations
