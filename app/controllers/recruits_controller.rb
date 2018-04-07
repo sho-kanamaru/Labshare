@@ -10,7 +10,7 @@ class RecruitsController < ApplicationController
     redirect_to clients_path
   end
 
-  def show
+    def show
     # 案件の情報取得
     @recruit = Recruit.find(params[:id])
 
