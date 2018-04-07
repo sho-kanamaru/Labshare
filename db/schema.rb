@@ -10,12 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407075514) do
+ActiveRecord::Schema.define(version: 20180407082507) do
 
   create_table "fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "field_id"
+    t.integer "rank"
+    t.integer "from_id"
+    t.integer "to_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_ranks_on_field_id"
+  end
+
+  create_table "user_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "field_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_user_fields_on_field_id"
+    t.index ["user_id"], name: "index_user_fields_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -25,4 +44,7 @@ ActiveRecord::Schema.define(version: 20180407075514) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ranks", "fields"
+  add_foreign_key "user_fields", "fields"
+  add_foreign_key "user_fields", "users"
 end
