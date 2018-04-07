@@ -7,6 +7,7 @@ class ClientsController < ApplicationController
 
   def show
     @client_recruit = Recruit.find(params[:id])
+    @applicants = WorkerRecruitRelation.where(recruit_id: @client_recruit.id)
     @user_id = ClientRecruitRelation.find_by(recruit_id: params[:id])
   end
 
