@@ -24,22 +24,32 @@ recruit = Recruit.create(
   status: 0
 )
 
-ClientRecruitRelation.create(
-  user_id: user1,
-  recruit_id: recruit.id
-)
-
-Recruit.create(
+recruit2 = Recruit.create(
   title: "リアル版「YOUは何しに日本へ？」世界に感動を生むWebエンジニア大募集",
   field_id: 2,
   detail: "TRIPLUSは、旅行先の生活様式や文化を体験したい外国人旅行客が、日本各地のアクティブシニアの方々自身が提案/提供する、まるでそこで暮らしているかのようなちょっとした日本体験を、検索/申し込みをしたり、外国人旅行客側からシニア側に対して、体験の内容をリクエストしたりする事ができるインターネットサービスです。",
   status: 0
 )
 
-Recruit.create(
+recruit3 = Recruit.create(
   title: "仮想通貨相場一覧アプリ",
   field_id: 3,
   detail: "世界中で取引されるビットコインのデータ（トランザクション）は、ネットワークに伝播すると、世界中にいる採掘者（マイナー）が、一定時間の取引データを1つにまとめた「ブロック」を競うように生成していきます。
 その取引の二重払いや不正を防ぐため、過去の取引履歴のデータの整合性を取りながら 取引の承認・確認作業を行うことをマイニングと言います。",
   status: 0
+)
+
+ClientRecruitRelation.create(
+  user_id: user1,
+  recruit_id: recruit.id
+)
+
+ClientRecruitRelation.create(
+  user_id: user2,
+  recruit_id: recruit2.id
+)
+
+ClientRecruitRelation.create(
+  user_id: user3,
+  recruit_id: recruit3.id
 )
