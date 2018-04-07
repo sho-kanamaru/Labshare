@@ -35,10 +35,12 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'rails_admin'
+gem 'cancan'
 
 # bootstarap
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
