@@ -13,9 +13,12 @@
     <ul class="nav navbar-nav pull-right">
       <% if user_signed_in? %>
           <li class="text-left"><a href="/clients">求人依頼を掲載する</a></li>
-          <li class="text-left"><a href="/users/sign_out">ログアウト</a></li>
+          <!--<li class="text-left"><a href="/users/sign_out" method="delete">ログアウト</a></li>-->
+          <li class="text-left">
+            <%= link_to "ログアウト", "/users/sign_out", method: :delete %>
+          </li>
       <% else %>
-          <li class="text-left"><a href="/users/sign_in">ログイン</a></li>
+          <li class="text-left"><a href="/users/sign_in" >ログイン</a></li>
           <li class="text-left"><a href="/users/sign_up">新規登録</a></li>
     <% end %>
     </ul>
