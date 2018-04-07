@@ -1,6 +1,7 @@
 class RecruitsController < ApplicationController
 
   def new
+    @fields = Field.all
   end
 
   def create
