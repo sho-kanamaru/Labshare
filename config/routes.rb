@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "workers#index"
 
   # workers
-  resources :workers, only: [:index]
+  resources :workers, only: [:index, :show]
 
   # clients
   resources :clients, only: [:index, :show, :edit, :update]
