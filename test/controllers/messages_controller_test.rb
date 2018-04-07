@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class MessageControllerTest < ActionDispatch::IntegrationTest
+class MessagesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get message_index_url
+    get messages_index_url
     assert_response :success
   end
 
