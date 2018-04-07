@@ -1,2 +1,30 @@
-<h1>Recruits#new</h1>
-<p>Find me in app/views/recruits/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     <div class="recruit_new form-horizontal">
+       <form>
+         <div class="form-group">
+           <label for="title">title</label>
+           <input type="title" class="form-control" id="title" placeholder="title">
+         </div>
+         <div class="form-group">
+           <label for="fields">fields</label>
+           <select class="form-control" id="fileds">
+             <option>1</option>
+             <option>2</option>
+             <option>3</option>
+             <option>4</option>
+             <option>5</option>
+           </select>
+         </div>
+
+         <div class="form-group">
+           <label for="detail">detail</label>
+           <textarea class="form-control" id="detail" rows="5"></textarea>
+         </div>
+         <button action="/clients" type="submit" class="btn btn-primary">掲載する</button>
+       </form>
+     </div>
+    </div>
+  </div>
+</div>
