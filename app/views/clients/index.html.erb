@@ -7,11 +7,12 @@
       <div class="recruit_list col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
         <% @recruits.each_with_index do |recruit,i| %>
+        <a href="/clients/<%= recruit.id %>" class="card-recruit">
           <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card h-100">
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><%= recruit.title %></a>
+                  <%= recruit.title %>
                 </h4>
                 <h5>$24.99</h5>
                 <p class="card-text"><%= recruit.detail %></p>
@@ -21,6 +22,7 @@
               </div>
             </div>
           </div>
+          </a>
         <% end %>
 
       </div>
