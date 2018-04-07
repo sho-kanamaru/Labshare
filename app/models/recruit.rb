@@ -8,4 +8,5 @@ class Recruit < ApplicationRecord
       recruits = WorkerRecruitRelation.where(user_id: worker_id)
       applied_recruits = recruits.map{ |a| Recruit.find(a.recruit_id)}
   end
+
 end

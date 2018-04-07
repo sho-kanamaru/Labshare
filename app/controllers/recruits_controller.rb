@@ -13,6 +13,7 @@ class RecruitsController < ApplicationController
   def show
     # 案件の情報取得
     @recruit = Recruit.find(params[:id])
+    # @applicants = WorkerRecruitRelation.where(recruit_id: @client_recruit.id)
 
     # 掲載しているクライアント情報を取得
     client_id = ClientRecruitRelation.find_by(recruit_id: params[:id]).user_id
@@ -29,10 +30,24 @@ class RecruitsController < ApplicationController
       @applied = false
     end
   end
+  
+  def edit
+    @url = "/recruits/"+params[:id]
+    @fields = Field.all
+    @recruit = Recruit.find(params[:id])
+  end
+
+  def update
+    recruit = Recruit.find(params[:id])
+    recruit.update(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
+    redirect_to :action => "show"
+  end  
 
   private
   def create_params
     params.permit(:title, :field_id, :detail)
   end
+
+
 
 end
