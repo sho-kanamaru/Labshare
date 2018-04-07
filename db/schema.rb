@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20180407141346) do
     t.bigint "recruit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.index ["recruit_id"], name: "index_worker_recruit_relations_on_recruit_id"
     t.index ["user_id"], name: "index_worker_recruit_relations_on_user_id"
   end
