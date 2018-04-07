@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :clients, only: [:index]
 
   resources :recruits, only: [:new, :create, :show] do
-    resources :messages, param: :user_id, only: [:index, :show]
+    resources :messages, param: :user_id, only: [:index, :create, :show]
   end
 end
