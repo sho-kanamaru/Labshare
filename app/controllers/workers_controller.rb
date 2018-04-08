@@ -2,8 +2,7 @@ class WorkersController < ApplicationController
   include WorkersHelper
 
   def index
-    recruits = get_recruits
-    @recruits = recruits.where.not(status: 2)
+    @recruits = get_recruits
     users = @recruits.map{|recruit| recruit.users.first}
     @fields = Field.all
     @url = "/workers/search"
