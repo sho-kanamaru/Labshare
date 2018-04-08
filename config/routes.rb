@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   # put "/recruits/:id/approvals/:user_id" , to: "recruits#approval"
   get "/workers/search/results", to: "workers#search"
   get "/recruits/:recruit_id/approvals/:user_id" , to: "recruits#approval"
-  get "/recruits/:recruit_id//completes/:user_id" , to: "recruits#complete"
+  put "/recruits/:recruit_id//completes/:user_id" , to: "recruits#complete"
 end

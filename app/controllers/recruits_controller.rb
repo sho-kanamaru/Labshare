@@ -24,11 +24,14 @@ class RecruitsController < ApplicationController
 
     @user = current_user
     applied_users = @applied_users.map{ |user| User.find(user.user_id)}
-
     if applied_users.include?(@user)
       @applied = true
     else
       @applied = false
+
+      applied_user = @applied_users.find{|user| user.status}
+
+      @url_complete = "/recruits/#{@recruit.id}/completes/#{applied_user.user.id}"
     end
   end
 
@@ -57,6 +60,7 @@ class RecruitsController < ApplicationController
     worker_recruit_relation.update(status: 2)
     recruit = Recruit.find(params[:recruit_id])
     recruit.update(status: 2)
+    recruit.field.ranks.create(rank: params[:rank][:rank], from_id: current_user.id, to_id: params[:user_id])
     redirect_to recruit_path(params[:recruit_id])
   end
 
