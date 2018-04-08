@@ -1,9 +1,11 @@
 class WorkersController < ApplicationController
+  include WorkersHelper
+
   def index
+    @recruits = get_recruits
+    users = @recruits.map{|recruit| recruit.users.first}
     @fields = Field.all    
     @url = "/workers/search"
-    @recruits = Recruit.all
-    users = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverage(users)
 
     @messages = Message.where(to_id: current_user)

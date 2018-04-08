@@ -16,7 +16,7 @@ class RecruitsController < ApplicationController
     # @applicants = WorkerRecruitRelation.where(recruit_id: @client_recruit.id)
 
     # 掲載しているクライアント情報を取得
-    @client = @recruit.user.first
+    @client = @recruit.users.first
 
     # 案件に申し込んでいる人の情報を取得
     # @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id]).map{ |user| User.find(user.user_id)}
