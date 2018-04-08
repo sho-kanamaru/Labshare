@@ -10,10 +10,26 @@
   </div>
 
   <div id="gnavi" class="collapse navbar-collapse">
+    <p><%= clientMessages%></p>
+    <p><%= workerMessages%></p>
     <ul class="nav navbar-nav pull-right">
       <% if user_signed_in? %>
-          <li class="text-left"><a href="/clients">求人案件を掲載する</a></li>
-          <li class="text-left"><a href="<%= worker_path(current_user.id) %>">マイページ</a></li>
+          <li class="text-left">
+            <a href="/clients">求人案件を掲載する
+              <% if clientMessages != 0 %>
+                  <span style="margin-left: 1px;"class="badge badge-red pull-right"><%= clientMessages%></span>
+              <% end %>
+            </a>
+          </li>
+
+          <li class="text-left">
+            <a href="<%= worker_path(current_user.id) %>">
+              <% if workerMessages != 0 %>
+                  <span style="margin-left: 1px;"class="badge badge-red pull-right"><%= workerMessages %></span>
+              <% end %>
+              マイページ
+            </a>
+          </li>
           <li class="text-left">
             <%= link_to "ログアウト", "/users/sign_out", method: :delete %>
           </li>

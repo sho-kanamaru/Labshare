@@ -24,6 +24,9 @@ class MessagesController < ApplicationController
     if WorkerRecruitRelation.where(user_id: current_user.id, recruit_id: params[:recruit_id]).size == 0 && @client != current_user
       WorkerRecruitRelation.create(user_id: current_user.id, recruit_id: params[:recruit_id])
     end
+
+    # 既読つける
+    Message.getUnreadMessage(current_user).where(recruit_id: params[:recruit_id]).update_all(read_flg: true)
   end
 
   private

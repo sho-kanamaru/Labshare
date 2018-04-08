@@ -5,7 +5,40 @@ class Message < ApplicationRecord
     if current_user.nil?
       return nil
     else
-      return Message.where(to_id: current_user.id, read_flg: false)
+      return Message.where(to_id: current_user.id, read_flg: false).group(:recruit_id)
+    end
+  end
+
+  # @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id])
+  #
+  # @user = current_user
+  # applied_users = @applied_users.map{ |user| User.find(user.user_id)}
+
+  def self.getUnreadMessageWorker(current_user)
+    if current_user.nil?
+      return nil
+    else
+      unreadMessages = Message.getUnreadMessage(current_user).select(:recruit_id)
+      client = getUnreadMessageClient(current_user)
+      if(unreadMessages.present?)
+        return unreadMessages.size - client
+      else
+        return 0
+      end
+    end
+  end
+
+  def self.getUnreadMessageClient(current_user)
+    if current_user.nil?
+      return nil
+    else
+      unreadRecruits = Message.getUnreadMessage(current_user).group(:recruit_id).select(:recruit_id)
+      if unreadRecruits.present?
+        users_id = Recruit.where(id: unreadRecruits).map{|recruit| recruit.users.first.id}
+        return myRecruits = users_id.count(current_user.id)
+      else
+        return 0
+      end
     end
   end
 end
