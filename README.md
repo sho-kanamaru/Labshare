@@ -1,4 +1,4 @@
-# Labshare
+# SHARES
 
 ## 製品概要
 ### 背景
