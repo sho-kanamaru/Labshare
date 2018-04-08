@@ -27,9 +27,9 @@ class RecruitsController < ApplicationController
     if applied_users.include?(@user)
       applied_user = @applied_users.find{|user| user.status}
       @url_complete = "/recruits/#{@recruit.id}/completes/#{applied_user.user.id}"
-      @applied = false
-    else
       @applied = true
+    else
+      @applied = false
     end
   end
 
