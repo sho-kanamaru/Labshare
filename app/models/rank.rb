@@ -40,6 +40,7 @@ class Rank < ApplicationRecord
         ranks.each do |rank|
             sum += rank.rank
         end
+        sum = sum 
         return sum
     end
 
@@ -51,6 +52,19 @@ class Rank < ApplicationRecord
                 sum += rank.rank
             end
             return sum
+        }
+    end
+
+    def self.getRankSumss(users)
+        
+        sums = users.map{ |user|
+             #rank平均
+            sum = 0
+            ranks = Rank.where(to_id: user.user_id).where(field_id: 1) #rankテーブルから自分あてのランク一覧を持ってくる
+            ranks.each do |rank|
+                sum += rank.rank
+            end
+            sum = sum
         }
     end
 

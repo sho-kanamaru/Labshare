@@ -33,8 +33,8 @@ class WorkersController < ApplicationController
     end
     @recruits = recruits.where.not(status: 2)
     users = ClientRecruitRelation.getUserByRecruitId(@recruits)
-    @rank = Rank.clientRankAverage(users)
-    @rank_sum = Rank.getRankSum(users)
+    @rank = Rank.clientRankAverageC(users)
+    @rank_sum = Rank.getRankSumss(users)
   end
 
   private
