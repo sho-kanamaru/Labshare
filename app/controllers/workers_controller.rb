@@ -8,7 +8,7 @@ class WorkersController < ApplicationController
     @fields = Field.all
     @url = "/workers/search"
     @rank = Rank.clientRankAverage(users)
-
+    @rank_sum = Rank.clientRankAS(users)
     @messages = Message.where(to_id: current_user)
   end
 
@@ -17,7 +17,8 @@ class WorkersController < ApplicationController
     @user = current_user
     @recruits = Recruit.getAppliedRecruitList(current_user.id)
     user_ids = ClientRecruitRelation.getUserByRecruitId(@recruits)
-    @rank = Rank.clientRankAverage(user_ids)
+    @rank = Rank.clientRankAverageC(user_ids)
+    @rank_sum = Rank.getRankSums(user_ids)
   end
 
   def search
@@ -33,6 +34,7 @@ class WorkersController < ApplicationController
     @recruits = recruits.where.not(status: 2)
     users = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverage(users)
+    @rank_sum = Rank.getRankSum(users)
   end
 
   private

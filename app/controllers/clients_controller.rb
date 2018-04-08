@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
     user_id = current_user.id
     @recruits = Recruit.getMyRecruitList(user_id)
     @ranks = Rank.getRecruitRankAverage(user_id, @recruits)
+    @rank_sum = Rank.getRankSum(user_id)
   end
 
   def show
@@ -16,9 +17,6 @@ class ClientsController < ApplicationController
     @fields = Field.all
     @recruit = Recruit.find(params[:id])
   end
-
-
- 
 
   private
   def create_params
