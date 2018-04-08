@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= render :partial => "layouts/header" %>
+    <%= render :partial => "layouts/header", locals: {messages: Message.getUnreadMessage(current_user.id)}%>
     <%= yield %>
   </body>
 </html>
