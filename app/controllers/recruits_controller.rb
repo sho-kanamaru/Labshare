@@ -23,8 +23,9 @@ class RecruitsController < ApplicationController
     @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id])
 
     @user = current_user
+    applied_users = @applied_users.map{ |user| User.find(user.user_id)}
 
-    if @applied_users.include?(@user)
+    if applied_users.include?(@user)
       @applied = true
     else
       @applied = false
