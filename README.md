@@ -1,24 +1,44 @@
-# README
+# SHARES
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 製品概要
+### 背景
+- 情報系の学生以外のインターンが少ない(アウトプットの場がない)
 
-Things you may want to cover:
+### 課題
+- 学生のアウトプットの場が少ない(特に情報系学生以外)
+- お金がない
+- モノ、情報(スキル)がない
 
-* Ruby version
+### ターゲット
+- 自分の専門のスキルを活かしたい(アウトプットしたい)学生
+- お金を稼ぎたい学生
+- 作業効率を上げたい学生
 
-* System dependencies
+### 製品説明
+学生が受託、外注できるWebアプリケーションサービス
 
-* Configuration
+- 自分の専門分野の案件を受託したい学生
 
-* Database creation
+1. 掲載された自分の専門分野の案件を探す
+2. 案件に応募し学生と連絡と取り、案件を受託する
+3. 成果物に応じて報酬を受け取り、レビューしてもらう
 
-* Database initialization
+- 自分の専門外分野の案件を外注したい学生
 
-* How to run the test suite
+1. 自分の専門外の分野の案件を掲載する
+2. 応募してきた学生と連絡を取り、案件を外注する
+3. 成果物に応じて報酬を渡し、レビューする
 
-* Services (job queues, cache servers, search engines, etc.)
+### 特徴・強み
+- スキルのアウトプットをしながらお金を稼ぐことができる
+- 専門外の案件を外注することで自分の研究に時間を使うことができる
+- レビュー(スコア)をポートフォリオとして就職活動に活かすことができる
 
-* Deployment instructions
+### 今後の展望
+- 募集内容の要約、単語抽出(現在応募している募集と類似している案件をマイページに表示)
+- メッセージ通知機能
 
-* ...
+## 開発内容・開発技術
+### 活用した技術
+#### フレームワーク
+- Ruby on Rails
