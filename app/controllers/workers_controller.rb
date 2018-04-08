@@ -2,7 +2,8 @@ class WorkersController < ApplicationController
   include WorkersHelper
 
   def index
-    @recruits = get_recruits
+    recruits = get_recruits
+    @recruits = recruits.where.not(status: 2)
     users = @recruits.map{|recruit| recruit.users.first}
     @fields = Field.all
     @url = "/workers/search"
@@ -25,10 +26,11 @@ class WorkersController < ApplicationController
     @query = params[:query]
     @url = "/workers/search"
     if params[:field_id] == "-1"
-      @recruits = Recruit.where("detail LIKE :hoge", hoge: "\%#{@query}\%")
+      recruits = Recruit.where("detail LIKE :hoge", hoge: "\%#{@query}\%")
     else
-      @recruits = Recruit.where("field_id = " + @field.to_s + " AND detail LIKE :hoge", hoge: "\%#{@query}\%")
+      recruits = Recruit.where("field_id = " + @field.to_s + " AND detail LIKE :hoge", hoge: "\%#{@query}\%")
     end
+    @recruits = recruits.where.not(status: 2)
     users = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverage(users)
   end
