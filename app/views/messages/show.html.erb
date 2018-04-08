@@ -4,8 +4,8 @@
 
       <!-- メッセージ相手を選択するナビ -->
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-
         <% if @client == current_user %>
+
           <ul class="nav nav-pills nav-stacked">
             <% @users.each do |user| %>
                 <li class="active"><a href="/recruits/<%= @recruit.id %>/messages/<%= user.id %>"><%= user.name %></a></li>
@@ -45,6 +45,7 @@
         </div>
 
         <%= form_for [@recruit, @message] do |f| %>
+          <%= f.hidden_field :to_user_id, :value => @to_user_id%>
           <div class='inputText'>
             <%= f.text_area :body, placeholder: 'Shift+Enterで送信', rows: "5", id: "txt", class: "form-control" %>
             <%= button_tag type: "submit", class: "btn btn-primary chat-btn pull-right", style: "margin-top: 1em" do %>

@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def create
     Message.create(create_params)
-    redirect_to recruit_message_path(params[:recruit_id], current_user)
+    redirect_to recruit_message_path(params[:recruit_id], params[:message][:to_user_id])
   end
 
   def show
@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
 
     # 応募者
     @users = get_applied_users
+
+    @to_user_id = params[:user_id]
 
     if WorkerRecruitRelation.where(user_id: current_user.id, recruit_id: params[:recruit_id]).size == 0 && @client != current_user
       WorkerRecruitRelation.create(user_id: current_user.id, recruit_id: params[:recruit_id])
@@ -38,8 +40,7 @@ class MessagesController < ApplicationController
   end
 
   def create_params
-    recruit_maker = ClientRecruitRelation.where(recruit_id: params[:recruit_id])
-    recruit_maker_user = User.find(recruit_maker[0].id)
-    params.require(:message).permit(:body).merge(from_id: current_user.id, to_id: recruit_maker_user.id, recruit_id: params[:recruit_id])
+    to_id = params[:message][:to_user_id]
+    params.require(:message).permit(:body).merge(from_id: current_user.id, to_id: to_id, recruit_id: params[:recruit_id])
   end
 end
