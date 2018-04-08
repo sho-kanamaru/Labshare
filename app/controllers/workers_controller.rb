@@ -5,6 +5,8 @@ class WorkersController < ApplicationController
     @recruits = Recruit.all
     users = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverage(users)
+
+    @messages = Message.where(to_id: current_user)
   end
 
   def show

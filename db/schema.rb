@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180407141346) do
+ActiveRecord::Schema.define(version: 20180408005147) do
 
   create_table "client_recruit_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -35,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180407141346) do
     t.bigint "recruit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read_flg", default: false, null: false
     t.index ["from_id"], name: "fk_rails_2bcf7eed31"
     t.index ["recruit_id"], name: "index_messages_on_recruit_id"
     t.index ["to_id"], name: "fk_rails_5eb9eebc29"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180407141346) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "recruit_money", default: 0
     t.index ["field_id"], name: "index_recruits_on_field_id"
   end
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20180407141346) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.boolean "admin"
+    t.integer "field_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

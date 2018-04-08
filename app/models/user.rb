@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :fields, through: :user_fields
   has_many :client_recruit_relations
   has_many :recruits, through: :client_recruit_relations
+  has_one :worker_recruit_relation
 end
