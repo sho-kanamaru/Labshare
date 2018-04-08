@@ -24,7 +24,11 @@ class WorkersController < ApplicationController
     @field = params[:field_id]
     @query = params[:query]
     @url = "/workers/search"
-    @recruits = Recruit.where("field_id = " + @field.to_s + " AND detail LIKE :hoge", hoge: "\%#{@query}\%")
+    if params[:field_id] == "-1"
+      @recruits = Recruit.where("detail LIKE :hoge", hoge: "\%#{@query}\%")
+    else
+      @recruits = Recruit.where("field_id = " + @field.to_s + " AND detail LIKE :hoge", hoge: "\%#{@query}\%")
+    end
     users = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverage(users)
   end
