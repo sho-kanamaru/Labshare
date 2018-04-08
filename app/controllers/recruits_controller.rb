@@ -59,6 +59,9 @@ class RecruitsController < ApplicationController
     redirect_to recruit_path(params[:recruit_id])
   end
 
+
+ 
+
   private
   def create_params
     params.permit(:title, :field_id, :detail, :recruit_money)
