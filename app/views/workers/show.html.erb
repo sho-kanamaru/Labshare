@@ -1,23 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-      <!--ユーザーの情報-->
-      <div class="user_info" style="float: left;">
-        <h3><%= current_user.name %></h3>
-        <h4><%= current_user.university %></h4>
-        <h5><%= current_user.email %></h5>
-        <a href="/users/edit" role="button" type="button" class="btn btn-primary">プロフィールを編集する</a>
-      </div>
-
-      <div class="user_score" style="float: left; margin-left: 50px; margin-top: 40px;">
-        <h3 style="float: left; margin-right: 20px">レビューの合計<br><%= @my_sum_rank %></h3>
-        <h3 style="float: right;">レビューの平均<br>
-        <div class="star-ratings-sprite" style="margin-left: 0px;">
-          <span style="width:<%= @my_ave_rank/5.0*100 %>%" class="star-ratings-sprite-rating"></span>
+      <div class="container">
+        <!--ユーザーの情報-->
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 user_info" style="float: left;">
+          <h3><%= current_user.name %></h3>
+          <h4><%= current_user.university %></h4>
+          <h5><%= current_user.email %></h5>
+          <a href="/users/edit" role="button" type="button" class="btn btn-primary">プロフィールを編集する</a>
         </div>
-        </h3>
+
+        <div class="user_score col-lg-6 col-md-6 col-sm-12 col-xs-12" style="float: left; margin-left: 50px; margin-top: 40px;">
+          <h3 class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="float: left; margin-right: 20px">レビューの合計<br><%= @my_sum_rank %></h3>
+          <h3 class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="float: right;">レビューの平均<br>
+            <div class="star-ratings-sprite" style="margin-left: 0px;">
+              <span style="width:<%= @my_ave_rank/5.0*100 %>%" class="star-ratings-sprite-rating"></span>
+            </div>
+          </h3>
+        </div>
       </div>
+
+
 
       <!--応募した案件の情報-->
       <div class="recruit_list col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 30px;">
