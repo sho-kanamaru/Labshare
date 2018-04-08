@@ -30,7 +30,6 @@ class RecruitsController < ApplicationController
       @applied = true
     else
       @applied = false
-
     end
   end
 
