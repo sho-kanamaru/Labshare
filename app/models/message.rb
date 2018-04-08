@@ -18,14 +18,13 @@ class Message < ApplicationRecord
     if current_user.nil?
       return nil
     else
-      # unreadMessages = getUnreadMessage(current_user).count()
-      # client = getUnreadMessageClient(current_user)
-      # if(unreadMessages.nil?)
-      #   return 0
-      # else
-      #   return unreadMessages - client
-      # end
-      return 0
+      unreadMessages = Message.getUnreadMessage(current_user).select(:recruit_id)
+      client = getUnreadMessageClient(current_user)
+      if(unreadMessages.present?)
+        return unreadMessages.size - client
+      else
+        return 0
+      end
     end
   end
 

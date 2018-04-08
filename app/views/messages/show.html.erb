@@ -30,11 +30,11 @@
           <div class="panel-body">
             <% @messages.each do |message| %>
                 <% if message.to_id == current_user.id %>
-                  <div class="text-right">
+                  <div class="text-left">
                       <div id='chat'><%= message.body %></div>
                   </div>
                 <% else %>
-                  <div class="text-left">
+                  <div class="text-right">
                     <div id='chat'><%= message.body %></div>
                     </div>
                 <% end %>
