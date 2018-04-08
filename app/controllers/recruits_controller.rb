@@ -25,13 +25,12 @@ class RecruitsController < ApplicationController
     @user = current_user
     applied_users = @applied_users.map{ |user| User.find(user.user_id)}
     if applied_users.include?(@user)
+      applied_user = @applied_users.find{|user| user.status}
+      @url_complete = "/recruits/#{@recruit.id}/completes/#{applied_user.user.id}"
       @applied = true
     else
       @applied = false
 
-      applied_user = @applied_users.find{|user| user.status}
-
-      @url_complete = "/recruits/#{@recruit.id}/completes/#{applied_user.user.id}"
     end
   end
 
