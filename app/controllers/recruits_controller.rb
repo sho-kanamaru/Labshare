@@ -21,7 +21,8 @@ class RecruitsController < ApplicationController
     @client = User.find(client_id)
 
     # 案件に申し込んでいる人の情報を取得
-    @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id]).map{ |user| User.find(user.user_id)}
+    # @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id]).map{ |user| User.find(user.user_id)}
+    @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id])
 
     @user = current_user
 
@@ -31,7 +32,7 @@ class RecruitsController < ApplicationController
       @applied = false
     end
   end
-  
+
   def edit
     @url = "/recruits/"+params[:id]
     @fields = Field.all
@@ -45,8 +46,19 @@ class RecruitsController < ApplicationController
   end
 
   def approval
-    worker_recruit= Recruit.find(params[:user_id])
-    binding.pry
+    worker_recruit_relation = WorkerRecruitRelation.where(user_id: params[:user_id], recruit_id: params[:recruit_id])
+    worker_recruit_relation.update(status: 1)
+    recruit = Recruit.find(params[:recruit_id])
+    recruit.update(status: 1)
+    redirect_to recruit_path(params[:recruit_id])
+  end
+
+  def complete
+    worker_recruit_relation = WorkerRecruitRelation.where(user_id: params[:user_id], recruit_id: params[:recruit_id])
+    worker_recruit_relation.update(status: 2)
+    recruit = Recruit.find(params[:recruit_id])
+    recruit.update(status: 2)
+    redirect_to recruit_path(params[:recruit_id])
   end
 
   private
