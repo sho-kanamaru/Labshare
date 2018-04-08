@@ -4,7 +4,7 @@ class Rank < ApplicationRecord
     def self.clientRankAverage(users)
         aves = users.map{ |user|
             ave = 0.0 #rank平均
-            ranks = Rank.where(to_id: user.user_id).where(field_id: 1) #rankテーブルから自分あてのランク一覧を持ってくる
+            ranks = Rank.where(to_id: user.id).where(field_id: 1) #rankテーブルから自分あてのランク一覧を持ってくる
             ranks.each do |rank|
                 ave += rank.rank
             end

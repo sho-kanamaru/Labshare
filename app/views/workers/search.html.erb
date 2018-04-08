@@ -21,7 +21,7 @@
                         <label class="control-label">名前</label>
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" name="query" placeholder="テキスト入力欄" >
+                        <input type="text" class="form-control" placeholder="テキスト入力欄" name="query" value="<%= @query %>">
                       </div>
                     </div>
                   </div>
@@ -34,7 +34,7 @@
                       <div class="col-lg12 col-md-12 col-sm-12 col-xs-12" >
            <select class="form-control" id="fileds" name="field_id">
              <% @fields.each do |field| %>
-                <% if field.id == 1 %>
+                    <% if field.id == 1 %>
                 <% else %>
                 <% if field.id == @field.to_i %>
                     <option value="<%= field.id %>" selected="selected"><%= field.name %></option>
@@ -50,13 +50,13 @@
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="row pull-right">
                       <div class=" ">
-                        <button class="btn btn-primary" type="submit">検索</button>
+                        <button class="btn btn-primary">検索</button>
                         <button class="btn">クリア</button>
                       </div>
                     </div>
                   </div>
                 </fieldset>
-              <% end %>
+                <% end %>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
                 <small class="text-muted"><h6 class="card_header"><%= recruit.title %></h6></small>
               </div>
               <div class="card-body hogehoge">
-                  <h5 class="card-price">金額：<%= recruit.recruit_money %>円</h5>
+                  <h5 class="card-price">金額：1000円</h5>
                   <p class="card-text">概要：<%= recruit.detail %></p>
               </div>
               <div class="card-footer">ユーザーの評価
