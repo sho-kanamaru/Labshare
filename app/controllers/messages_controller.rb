@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
     end
 
     # 既読つける
-    Message.getUnreadMessage(current_user).where(recruit_id: params[:recruit_id]).update_all(read_flf: true)
+    Message.getUnreadMessage(current_user).where(recruit_id: params[:recruit_id]).update_all(read_flg: true)
   end
 
   private
