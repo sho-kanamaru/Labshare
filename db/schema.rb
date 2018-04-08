@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180408005147) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "recruit_money", default: 0
+    t.text "image"
     t.index ["field_id"], name: "index_recruits_on_field_id"
   end
 
