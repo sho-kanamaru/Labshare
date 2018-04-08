@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-body">
         <h1 class="card-title card-title-custom"><%= @recruit.title %></h5>
-        <img class="card-img-top card-img-top-custom" src="https://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg" alt="Card image cap">
+        <img class="card-img-top card-img-top-custom" src="<%= display_url(@recruit.field_id)%>" alt="Card image cap">
         <% if @recruit.status != 2 %>
         <h2>金額: <%= @recruit.recruit_money %>円</h2>
         <p class="card-text card-text-custom"><%= @recruit.detail %></p>
@@ -22,13 +22,7 @@
                 <a href="/recruits/<%= @recruit.id %>/approvals/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">承認</a>
               <% end %>
               <% if applied_user.status == 1 %>
-              <div style="margin-bottom: 10px;">
-                <%= form_tag(@url_complete, method: :put) do %>
-                  <%= select(:rank, :rank, [[1,1], [2,2], [3,3], [4,4], [5,5]]) %>
-                  <%= submit_tag("完了") %>
-                <% end %>
-              </div>
-                <!-- <a href="/recruits/<%= @recruit.id %>/completes/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">完了</a> -->
+                <a href="/recruits/<%= @recruit.id %>/completes/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">完了</a>
               <% end %>
               <a href="/recruits/<%= @recruit.id %>/messages/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">チャット画面へ進む</a></div>
             </div>
