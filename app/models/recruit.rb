@@ -1,5 +1,5 @@
 class Recruit < ApplicationRecord
-  has_one :message
+  has_many :messages
   belongs_to :field
   has_many :client_recruit_relations
   has_many :users, through: :client_recruit_relations

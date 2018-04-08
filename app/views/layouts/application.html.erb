@@ -11,7 +11,10 @@
   </head>
 
   <body>
-    <%= render :partial => "layouts/header", locals: {messages: Message.getUnreadMessage(current_user)}%>
+    <%= render :partial => "layouts/header", locals: {
+        clientMessages: Message.getUnreadMessageClient(current_user),
+        workerMessages: Message.getUnreadMessageWorker(current_user)
+    }%>
     <%= yield %>
   </body>
 </html>

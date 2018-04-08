@@ -30,9 +30,9 @@
           <% end %>
         <% else %>
           <% if @applied %>
-            <a href="/recruits/<%= @recruit.id %>/messages/<%= current_user.id %>" class="btn btn-primary btn-custom">チャット画面へ進む</a>
+            <a href="/recruits/<%= @recruit.id %>/messages/<%= @client.id %>" class="btn btn-primary btn-custom">チャット画面へ進む</a>
           <% else %>
-            <a href="/recruits/<%= @recruit.id %>/messages/<%= current_user.id %>" class="btn btn-primary btn-custom">応募する</a>
+            <a href="/recruits/<%= @recruit.id %>/messages/<%= @client.id %>" class="btn btn-primary btn-custom">応募する</a>
           <% end %>
         <% end %>
         <% else %>
