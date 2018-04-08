@@ -23,8 +23,9 @@ class RecruitsController < ApplicationController
     @applied_users = WorkerRecruitRelation.where(recruit_id: params[:id])
 
     @user = current_user
+    applied_users = @applied_users.map{ |user| User.find(user.user_id)}
 
-    if @applied_users.include?(@user)
+    if applied_users.include?(@user)
       @applied = true
     else
       @applied = false
@@ -39,7 +40,7 @@ class RecruitsController < ApplicationController
 
   def update
     recruit = Recruit.find(params[:id])
-    recruit.update(title: create_params[:title], field_id: create_params[:field_id], detail: create_params[:detail])
+    recruit.update(create_params)
     redirect_to :action => "show"
   end
 
@@ -58,9 +59,6 @@ class RecruitsController < ApplicationController
     recruit.update(status: 2)
     redirect_to recruit_path(params[:recruit_id])
   end
-
-
- 
 
   private
   def create_params
