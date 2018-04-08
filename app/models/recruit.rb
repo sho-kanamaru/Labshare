@@ -2,8 +2,7 @@ class Recruit < ApplicationRecord
   has_one :message
   belongs_to :field
   has_many :client_recruit_relations
-  has_many :client_recruit_relations
-  has_many :user, through: :client_recruit_relations
+  has_many :users, through: :client_recruit_relations
 
   def self.getMyRecruitList(user_id)
     recruit_ids = ClientRecruitRelation.where(user_id: user_id)

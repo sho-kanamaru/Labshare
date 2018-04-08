@@ -1,7 +1,9 @@
 class WorkersController < ApplicationController
+  include WorkersHelper
+
   def index
-    @recruits = Recruit.all
-    users = ClientRecruitRelation.getUserByRecruitId(@recruits)
+    @recruits = get_recruits
+    users = @recruits.map{|recruit| recruit.users.first}
     @rank = Rank.clientRankAverage(users)
 
     @messages = Message.where(to_id: current_user)
