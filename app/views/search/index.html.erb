@@ -13,7 +13,7 @@
           </div>
           <div id="sampleAccordionCollapse1" class="panel-collapse collapse in">
             <div class="panel-body">
-              <%= form_tag(@url, method: :get) do %>
+              <form action="/search" method="get">
                 <fieldset>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="row">
@@ -21,7 +21,7 @@
                         <label class="control-label">名前</label>
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" name="query" placeholder="テキスト入力欄" >
+                        <input type="text" class="form-control" placeholder="テキスト入力欄">
                       </div>
                     </div>
                   </div>
@@ -32,28 +32,24 @@
                         <label class="control-label">カテゴリ</label>
                       </div>
                       <div class="col-lg12 col-md-12 col-sm-12 col-xs-12" >
-           <select class="form-control" id="fileds" name="field_id">
-             <% @fields.each do |field| %>
-                <% if field.id == @field.to_i %>
-                    <option value="<%= field.id %>" selected="selected"><%= field.name %></option>
-                <% else %>
-                    <option value="<%= field.id %>"><%= field.name %></option>
-                <% end %>
-             <% end %>
-           </select>
+                        <select class="form-control" id="number">
+                          <option value="1" selected="selected">　</option>
+                          <option value="2">男</option>
+                          <option value="3">女</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="row pull-right">
                       <div class=" ">
-                        <button class="btn btn-primary" type="submit">検索</button>
+                        <button class="btn btn-primary">検索</button>
                         <button class="btn">クリア</button>
                       </div>
                     </div>
                   </div>
                 </fieldset>
-              <% end %>
+              </form>
             </div>
           </div>
         </div>
@@ -68,7 +64,7 @@
                 <small class="text-muted"><h6 class="card_header"><%= recruit.title %></h6></small>
               </div>
               <div class="card-body hogehoge">
-                  <h5 class="card-price">金額：<%= recruit.recruit_money %>円</h5>
+                  <h5 class="card-price">金額：1000円</h5>
                   <p class="card-text">概要：<%= recruit.detail %></p>
               </div>
               <div class="card-footer">ユーザーの評価
