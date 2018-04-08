@@ -4,7 +4,7 @@ class WorkersController < ApplicationController
   def index
     @recruits = get_recruits
     users = @recruits.map{|recruit| recruit.users.first}
-    @fields = Field.all    
+    @fields = Field.all
     @url = "/workers/search"
     @rank = Rank.clientRankAverage(users)
 
