@@ -49,6 +49,9 @@ class RecruitsController < ApplicationController
     binding.pry
   end
 
+
+ 
+
   private
   def create_params
     params.permit(:title, :field_id, :detail)

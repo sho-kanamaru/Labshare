@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   root "workers#index"
 
   # workers
-  resources :workers, only: [:index, :show]
+  resources :workers, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :search, only: [:show, :index]
 
   # clients
   resources :clients, only: [:index, :show, :edit, :update]
@@ -14,5 +20,6 @@ Rails.application.routes.draw do
     resources :messages, param: :user_id, only: [:index, :create, :show]
   end
 
-  put "/recruits/:id/approvals/:user_id" , to: "recruits#approval"
+  # put "/recruits/:id/approvals/:user_id" , to: "recruits#approval"
+  get "/workers/search/results", to: "workers#search"
 end
