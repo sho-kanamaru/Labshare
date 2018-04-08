@@ -22,7 +22,13 @@
                 <a href="/recruits/<%= @recruit.id %>/approvals/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">承認</a>
               <% end %>
               <% if applied_user.status == 1 %>
-                <a href="/recruits/<%= @recruit.id %>/completes/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">完了</a>
+              <div style="margin-bottom: 10px;">
+                <%= form_tag(@url_complete, method: :put) do %>
+                  <%= select(:rank, :rank, [[1,1], [2,2], [3,3], [4,4], [5,5]]) %>
+                  <%= submit_tag("完了") %>
+                <% end %>
+              </div>
+                <!-- <a href="/recruits/<%= @recruit.id %>/completes/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">完了</a> -->
               <% end %>
               <a href="/recruits/<%= @recruit.id %>/messages/<%= applied_user.user.id %>" class="btn btn-primary btn-custom inline">チャット画面へ進む</a></div>
             </div>
