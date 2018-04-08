@@ -13,7 +13,7 @@
     <ul class="nav navbar-nav pull-right">
       <% if user_signed_in? %>
           <li class="text-left"><a href="/clients">求人案件を掲載する</a></li>
-          <li class="text-left"><a href="<%= worker_path(current_user) %>">マイページ</a></li>
+          <li class="text-left"><a href="<%= worker_path(current_user.id) %>">マイページ</a></li>
           <li class="text-left">
             <%= link_to "ログアウト", "/users/sign_out", method: :delete %>
           </li>
