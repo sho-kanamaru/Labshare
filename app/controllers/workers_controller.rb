@@ -19,6 +19,8 @@ class WorkersController < ApplicationController
     user_ids = ClientRecruitRelation.getUserByRecruitId(@recruits)
     @rank = Rank.clientRankAverageC(user_ids)
     @rank_sum = Rank.getRankSums(user_ids)
+    @my_ave_rank = Rank.where(to_id: @user).average(:rank).to_f
+    @my_sum_rank = Rank.where(to_id: @user).sum(:rank)
   end
 
   def search
