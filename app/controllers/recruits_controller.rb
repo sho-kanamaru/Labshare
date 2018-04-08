@@ -26,7 +26,7 @@ class RecruitsController < ApplicationController
 
     @user = current_user
 
-    if @applied_users.include?(@user)
+    if @applied_users.include?(@user.id)
       @applied = true
     else
       @applied = false

@@ -8,4 +8,21 @@ class Message < ApplicationRecord
       return Message.where(to_id: current_user.id, read_flg: false)
     end
   end
+
+  # def self.getUnreadMessageWoker(current_user)
+  #   if current_user.nil?
+  #     return nil
+  #   else
+  #     return Message.where(to_id: current_user.id, read_flg: false)
+  #   end
+  # end
+  #
+  # def self.getUnreadMessageClient(current_user)
+  #   if current_user.nil?
+  #     return nil
+  #   else
+  #     unreadMessages = Message.getUnreadMessage(current_user)
+  #     return unreadMessages.map{}
+  #   end
+  # end
 end
